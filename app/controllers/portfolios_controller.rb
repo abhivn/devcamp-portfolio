@@ -26,7 +26,7 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def update
@@ -37,6 +37,11 @@ class PortfoliosController < ApplicationController
         format.html { render :edit }
       end
     end
+  end
+
+  def destroy
+    @portfolio.destroy
+    redirect_to portfolios_path
   end
 
   def set_portfolio
