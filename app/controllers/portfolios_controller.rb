@@ -3,7 +3,8 @@ class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: [:edit, :destroy, :update, :show]
 
   def index
-    @portfolios = Portfolio.all
+    # @portfolios = Portfolio.where(subtitle: "Ruby on rails")
+    @portfolios = Portfolio.all()
   end
 
   def new
