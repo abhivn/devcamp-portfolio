@@ -2,6 +2,7 @@ class PortfoliosController < ApplicationController
 
   before_action :set_portfolio, only: [:edit, :destroy, :update, :show]
   layout "portfolio"
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
 
   def index
     # @portfolios = Portfolio.where(subtitle: "Ruby on rails")
