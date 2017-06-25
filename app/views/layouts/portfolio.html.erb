@@ -14,7 +14,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/nav", location: 'top' %>
-    <%= login_helper %>
+    <%= login_helper "nav-link"%>
     <%= yield %>
     <% if session[:source] %>
     <p>Thanks for visiting me from <%= session[:source] %></p>
