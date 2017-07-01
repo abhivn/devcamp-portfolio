@@ -1,4 +1,6 @@
-
+<div class="album text-muted">
+  <div class="container">
+    <div class="row">
       <% @portfolios.each do |portfolio| %>
       <div class="card">
         <%= image_tag portfolio.thumb_image if !portfolio.thumb_image.nil?%>
@@ -7,3 +9,6 @@
         </p>
       </div>
       <% end %>
+    </div>
+     </div>
+      </div>
