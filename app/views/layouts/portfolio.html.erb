@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
     <meta name="keywords" content="<%= @seo_keywords %>" />
@@ -10,14 +12,11 @@
   </head>
 
   <body>
-    <h2>Portfolio Section</h2>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= render "shared/nav", location: 'top' %>
-    <%= login_helper %>
-    <%= yield %>
-    <% if session[:source] %>
-    <p>Thanks for visiting me from <%= session[:source] %></p>
+    <%= render "shared/portfolio_nav" %>
+    <% if !logged_in?(:site_admin)%>
+    <%= render "shared/portfolio_masthead" %>
     <% end %>
+    <%= yield %>
+    <%= render "shared/portfolio_footer" %>
   </body>
 </html>

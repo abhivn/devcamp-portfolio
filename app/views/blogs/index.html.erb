@@ -1,8 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Blogs</h1>
+<div class="col-sm-8 blog-main">
+    <%= paginate @blogs %>
+  <%= @blogs.each do |blog|%>
+  <div class="blog-post">
+    <h2 class="blog-post-title"><%= link_to blog.title.upcase, blog_path(blog) %></h2>
+    <p class="blog-post-meta">Published <%= distance_of_time_in_words(blog.created_at,Time.now) %> ago</p>
+    <% if logged_in?(:site_admin) %>
+    <p class="blog-post-meta"><%= link_to blog.status, toggle_status_blog_path(blog)%> / <%= link_to 'Edit', edit_blog_path(blog)%>
+      / <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }%>
+    </p>
+    <% end %>
+    <p><%= blog.body %></p>
+  </div><!-- /.blog-post -->
+  <% end %>
 
-<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
+  <%= paginate @blogs %>
+
+</div><!-- /.blog-main -->
+
+
+<!-- <%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
 
 <table>
   <thead>
@@ -28,4 +46,4 @@
   </tbody>
 </table>
 
-<br>
+<br> -->
